@@ -44,6 +44,8 @@
   margin: 5%;
   background-color: white;
   border: solid black 1px;
+  color: #007777;
+  font-weight: bold;
   border-radius: 10px;
   height: 5vh;
   width: 5vw;
@@ -67,4 +69,58 @@
 .files_names {
   margin: 5px;
   font-weight: 500;
+}
+
+.top_header {
+  width: 50vw;
+  display: flex;
+  flex-direction: row;
+  text-align: left;
+  align-items: center;
+}
+
+.hello_header {
+  margin-right: 0.1vw;
+  margin-left: 0.1vw;
+}
+
+.email_header {
+  font-weight: 100;
+  color: #007777;
+}
+
+.exit_header {
+  width: 100%;
+  text-align: right;
+  font-weight: 100;
+  margin-right: 0.1vw;
+  margin-left: 0.1vw;
+  cursor: pointer;
+}
+
+.uploaded_files {
+  color: #007777;
+  margin-bottom: 20vh;
+  font-weight: 300;
+}
+
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.h2 {
+  margin-top: 20vh;
+  font-weight: 100;
+}
+
+.upload_more {
+  text-decoration: underline;
+}
+
+.successful {
+  font-weight: 100;
 }

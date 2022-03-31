@@ -24,6 +24,10 @@
   background-color: white;
   border: solid black 1px;
   border-radius: 2px;
+  color: #007777;
+  font-weight: bold;
+  height: 5vh;
+  width: 5vw;
 }
 
 .form {

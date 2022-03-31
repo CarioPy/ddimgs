@@ -1,7 +1,8 @@
 import Head from "next/head";
 import Image from "next/image";
-import styles from "../styles/Home.module.css";
-import Dropzone from "./Dropzone";
+import { FeedUser } from "semantic-ui-react";
+import styles from "../../styles/Home.module.css";
+import Dropzone from "./dropzone";
 
 export default function Drop() {
   return (

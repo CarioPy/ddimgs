@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Button, Form, Loader } from "semantic-ui-react";
 import React, { Component } from "react";
 import styles from "../styles/LogInFrame.module.css";
+import react from "react";
 
 export default function LogInFrame() {
   const [form, setForm] = useState({ email: "", password: "" });
@@ -26,9 +27,10 @@ export default function LogInFrame() {
       if (data.length === 0) {
         access = false;
         window.location.href = "/error";
+        console.log("error");
       } else {
         access = true;
-        window.location.href = "/drop";
+        window.location.href = "/drop/" + data.email;
       }
       return access;
     } catch (error) {

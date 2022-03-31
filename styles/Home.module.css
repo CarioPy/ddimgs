@@ -114,3 +114,14 @@
     flex-direction: column;
   }
 }
+
+.goingback {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.back_link {
+  margin-left: 10px;
+  text-decoration: underline;
+}

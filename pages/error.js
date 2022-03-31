@@ -2,9 +2,8 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "../styles/Home.module.css";
-import LogInFrame from "../components/LogInFrame";
 
-export default function Home() {
+export default function Error() {
   return (
     <div className={styles.container}>
       <Head>
@@ -13,7 +12,14 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <LogInFrame />
+        <Image src="/../public/error_icon.png" width={200} height={200}></Image>
+        <h1>Access Denied</h1>
+        <div className={styles.goingback}>
+          <Image src="/../public/left_arrow.png" width={20} height={20}></Image>
+          <Link href="/">
+            <a className={styles.back_link}>Go back to login page</a>
+          </Link>
+        </div>
       </main>
     </div>
   );

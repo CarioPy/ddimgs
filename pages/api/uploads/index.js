@@ -1,37 +1,38 @@
-import DBConnect from "../../../utils/dbConnect";
-import Upload from "/models/uploads.js";
+import nextConnect from "next-connect";
+import multer from "multer";
 
-DBConnect();
+const upload = multer({
+  storage: multer.diskStorage({
+    destination: "./public/uploads",
+    filename: (req, file, cb) => cb(null, file.originalname),
+  }),
+});
 
-export default async (req, res) => {
-  const { method } = req;
-  switch (method) {
-    case "GET":
-      try {
-        const note = await Upload.find({});
-        res.status(201).json({ success: true, data: note });
-      } catch (error) {
-        res.status(400).json({ success: false });
-      }
-      break;
-    case "POST":
-      try {
-        const note = await Upload.create(req.body);
-        res.status(201).json({ success: true, data: note });
-      } catch (error) {
-        res.status(400).json({ success: false });
-      }
-      break;
-    case "DELETE":
-      try {
-        const note = await Upload.deleteOne(req.body);
-        res.status(201).json({ success: true, data: note });
-      } catch (error) {
-        res.status(400).json({ success: false });
-      }
-      break;
-    default:
-      res.status(400).json({ success: false });
-      break;
-  }
+const apiRoute = nextConnect({
+  onError(error, req, res) {
+    res
+      .status(501)
+      .json({ error: `Sorry something Happened! ${error.message}` });
+  },
+  onNoMatch(req, res) {
+    res.status(405).json({ error: `Method '${req.method}' Not Allowed` });
+  },
+});
+
+console.log("upload");
+
+apiRoute.use(upload.array("theFiles"));
+
+apiRoute.post((req, res) => {
+  console.log(req);
+  console.log(upload);
+  res.status(200).json({ data: "success" });
+});
+
+export default apiRoute;
+
+export const config = {
+  api: {
+    bodyParser: false, // Disallow body parsing, consume as stream
+  },
 };

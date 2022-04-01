@@ -19,13 +19,9 @@ const apiRoute = nextConnect({
   },
 });
 
-console.log("upload");
-
 apiRoute.use(upload.array("theFiles"));
 
 apiRoute.post((req, res) => {
-  console.log(req);
-  console.log(upload);
   res.status(200).json({ data: "success" });
 });
 

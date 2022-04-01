@@ -1,4 +1,5 @@
 import React, { useCallback, useState, useContext } from "react";
+import Link from "next/link";
 import { Button } from "semantic-ui-react";
 import Dropzone from "../../components/Dropzone";
 import styles from "../../styles/Dropzone.module.css";
@@ -48,7 +49,9 @@ function App() {
           <h3>{drop}</h3>
         </div>
         <div className={styles.exit_header}>
-          <h3 href="localhost:3000">Exit</h3>
+          <Link href="/">
+            <h3>Exit</h3>
+          </Link>
         </div>
       </div>
       <Dropzone onDrop={onDrop} />

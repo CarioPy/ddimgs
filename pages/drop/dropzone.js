@@ -46,6 +46,7 @@ function App() {
     const formData = new FormData();
     Array.from(files).forEach((file) => {
       formData.append("theFiles", file);
+      console.log(file.name);
     });
 
     const response = await axios.post("/api/uploads", formData, config);

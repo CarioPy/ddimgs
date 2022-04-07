@@ -6,6 +6,7 @@ import Link from "next/link";
 
 import Dropzone from "../../components/Dropzone";
 import styles from "../../styles/Dropzone.module.css";
+import UploadBtn from "../upload_test";
 
 function App() {
   const router = useRouter();
@@ -83,6 +84,7 @@ function App() {
       <Button onClick={onSubmit} className={styles.SubmitButton}>
         Upload
       </Button>
+      <UploadBtn>Try</UploadBtn>
     </main>
   );
 }

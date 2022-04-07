@@ -23,6 +23,7 @@ export default function LogInFrame() {
       });
       router.push("/");
       const { data } = await res.json();
+      console.log(res.json());
 
       if (data.length === 0) {
         access = false;

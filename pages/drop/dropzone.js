@@ -3,10 +3,10 @@ import { Button } from "semantic-ui-react";
 import { useRouter } from "next/router";
 import axios from "axios";
 import Link from "next/link";
+import uploadObject from "../api/uploads/upload_DO";
 
 import Dropzone from "../../components/Dropzone";
 import styles from "../../styles/Dropzone.module.css";
-import UploadBtn from "../upload_test";
 
 function App() {
   const router = useRouter();
@@ -81,10 +81,9 @@ function App() {
           );
         })}
       </div>
-      <Button onClick={onSubmit} className={styles.SubmitButton}>
+      <Button onClick={uploadObject} className={styles.SubmitButton}>
         Upload
       </Button>
-      <UploadBtn>Try</UploadBtn>
     </main>
   );
 }

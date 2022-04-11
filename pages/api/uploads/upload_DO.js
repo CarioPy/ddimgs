@@ -1,6 +1,4 @@
 import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
-import { Button } from "semantic-ui-react";
-import styles from "../styles/Dropzone.module.css";
 
 // Step 2: The s3Client function validates your request and directs it to your Space's specified endpoint using the AWS SDK.
 const s3Client = new S3Client({
@@ -21,12 +19,12 @@ const params = {
   ACL: "private", // Defines ACL permissions, such as private or public.
   Metadata: {
     // Defines metadata tags.
-    "x-amz-meta-my-key": "your-value",
+    "x-amz-meta-my-key": "first-uploaded file on this space",
   },
 };
 
 // Step 4: Define a function that uploads your object using SDK's PutObjectCommand object and catches any errors.
-const uploadObject = async () => {
+export default async function uploadObject() {
   try {
     const data = await s3Client.send(new PutObjectCommand(params));
     console.log(
@@ -36,14 +34,4 @@ const uploadObject = async () => {
   } catch (err) {
     console.log("Error", err);
   }
-};
-
-export default function UploadBtn() {
-  return (
-    <div>
-      <Button onClick={uploadObject} className={styles.SubmitButton}>
-        DigitalOcean
-      </Button>
-    </div>
-  );
 }

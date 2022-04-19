@@ -6,11 +6,14 @@ import Link from "next/link";
 
 import Dropzone from "../../components/Dropzone";
 import styles from "../../styles/Dropzone.module.css";
+import { useSession } from "next-auth/react";
 
 function App() {
+  const { data: session, status } = useSession();
+  console.log(session, status);
+
   const router = useRouter();
   const [files, setFiles] = useState([]);
-
   // You don't need to create state for the file_names, because the file names can be derived from the "files" state.
   const { drop } = router.query;
 
@@ -50,7 +53,13 @@ function App() {
     });
 
     const response = await axios.post("/api/uploads", formData, config);
-    console.log("response", response.data);
+
+    if (response.data) {
+      router.push(`/drop/${drop}/${files[0].name}`);
+    } else {
+      alert("something went wrong");
+      router.push("/");
+    }
   };
 
   // We pass onDrop function and accept prop to the component. It will be used as initial params for useDropzone hook
@@ -64,7 +73,7 @@ function App() {
           <h3>{drop}</h3>
         </div>
         <div className={styles.exit_header}>
-          <Link href="/">
+          <Link href="http://localhost:3000/api/auth/signout">
             <h3>Log Out</h3>
           </Link>
         </div>

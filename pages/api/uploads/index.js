@@ -2,12 +2,15 @@ import nextConnect from "next-connect";
 import multer from "multer";
 import uploadObject from "./upload_DO";
 
-const upload = multer({
-  storage: multer.diskStorage({
-    destination: "./public/uploads",
-    filename: (req, file, cb) => cb(null, file.originalname),
-  }),
-});
+const upload = multer(
+  {
+    storage: multer.diskStorage({
+      destination: "./public/uploads",
+      filename: (req, file, cb) => cb(null, file.originalname),
+    }),
+  }
+  //console.log("uploaded")
+);
 
 const apiRoute = nextConnect({
   onError(error, req, res) {
@@ -23,10 +26,10 @@ const apiRoute = nextConnect({
 apiRoute.use(upload.array("theFiles"));
 
 apiRoute.post(async (req, res) => {
-  console.log(req.files);
+  //console.log(req.files[0]);
   // only upload 1 file for now. Try find out how to upload multiple files to DO.
-  const { path, filename, mimetype } = req.files[0];
-  await uploadObject(path, filename, mimetype);
+  const { path, originalname, mimetype } = req.files[0];
+  await uploadObject(path, originalname, mimetype);
   res.status(200).json({ data: "success" });
 });
 

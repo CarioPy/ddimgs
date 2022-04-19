@@ -104,6 +104,15 @@
   font-weight: 300;
 }
 
+.link_uploaded_files {
+  color: #00c8ff;
+  text-decoration: underline;
+  margin-bottom: 20vh;
+  font-weight: 300;
+  font-size: medium;
+  cursor: pointer;
+}
+
 .container {
   height: 100vh;
   display: flex;

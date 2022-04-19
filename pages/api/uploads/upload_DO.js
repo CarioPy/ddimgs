@@ -14,6 +14,7 @@ const s3Client = new S3Client({
 // Step 4: Define a function that uploads your object using SDK's PutObjectCommand object and catches any errors.
 export default async function uploadObject(filePath, fileName, contentType) {
   const file = fs.readFileSync(filePath);
+  console.log(filePath, fileName, contentType);
 
   // Step 3: Define the parameters for the object you want to upload.
   const params = {

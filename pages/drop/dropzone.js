@@ -10,7 +10,6 @@ import { useSession } from "next-auth/react";
 
 function App() {
   const { data: session, status } = useSession();
-  console.log(session, status);
 
   const router = useRouter();
   const [files, setFiles] = useState([]);
@@ -33,6 +32,7 @@ function App() {
   }, []);
 
   const onSubmit = async () => {
+    console.log("GO");
     const config = {
       // when uploading files, the content type needs to be multipart/form-data
       headers: { "content-type": "multipart/form-data" },
@@ -61,7 +61,6 @@ function App() {
       router.push("/");
     }
   };
-
   // We pass onDrop function and accept prop to the component. It will be used as initial params for useDropzone hook
   return (
     <main className={styles.app}>
@@ -73,7 +72,7 @@ function App() {
           <h3>{drop}</h3>
         </div>
         <div className={styles.exit_header}>
-          <Link href="http://localhost:3000/api/auth/signout">
+          <Link href="/api/auth/signout">
             <h3>Log Out</h3>
           </Link>
         </div>

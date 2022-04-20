@@ -1,4 +1,4 @@
-import styles from "../styles/Home.module.css";
+import styles from "../../styles/Home.module.css";
 import Head from "next/head";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
